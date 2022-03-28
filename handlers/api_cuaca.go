@@ -15,17 +15,6 @@ func CuacaUpdate(ctx *gin.Context) {
 		Water: RandomNumber(),
 	}
 
-	// data, err := json.Marshal(&weather)
-	// if err != nil {
-	// 	log.Fatalf(err.Error())
-	// 	return
-	// }
-
-	if err := ctx.ShouldBindJSON(&weather); err != nil {
-		ctx.AbortWithError(http.StatusBadRequest, err)
-		return
-	}
-
 	ctx.JSON(http.StatusOK, gin.H{
 		"status": weather,
 	})
