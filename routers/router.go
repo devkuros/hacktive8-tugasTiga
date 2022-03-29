@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"trialtugastiga/handlers"
+	"trialtugastiga/repositories"
 
 	"github.com/gin-gonic/gin"
 )
@@ -9,7 +9,7 @@ import (
 func StartServer() *gin.Engine {
 	routers := gin.Default()
 
-	routers.GET("/", handlers.CuacaUpdate)
+	routers.GET("/weather", repositories.CuacaUpdate)
 
 	return routers
 }
