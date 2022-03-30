@@ -26,13 +26,3 @@ func RandomNumber() (randNum int) {
 	max := 100
 	return rand.Intn(max-min+1) + min
 }
-
-// func DoEvery(d time.Duration, f func(time.Time)) {
-// 	for x := range time.Tick(d) {
-// 		f(x)
-// 	}
-// }
-
-// func GetUpdateCuaca(ctx *gin.Context) {
-// 	DoEvery(1*time.Second, CuacaUpdate)
-// }

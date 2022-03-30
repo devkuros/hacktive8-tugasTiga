@@ -2,13 +2,14 @@ package repositories
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"trialtugastiga/models"
 )
 
-func GetDataCuaca() {
+func GetDataCuaca() models.Cuacas {
 	res, err := http.Get("http://localhost:8085/weather")
 	if err != nil {
 		log.Fatalln(err)
@@ -21,13 +22,11 @@ func GetDataCuaca() {
 
 	defer res.Body.Close()
 
-	var getCuaca models.Cuaca
+	var getCuaca models.Cuacas
 
-	err = json.Unmarshal(body, &getCuaca)
-	if err != nil {
-		log.Fatalln(err)
+	if err := json.Unmarshal(body, &getCuaca); err != nil {
+		fmt.Println("Cannot Unmarshal JSON!!")
 	}
 
-	log.Println("Wind: ", getCuaca.Wind)
-	log.Println("Water: ", getCuaca.Water)
+	return getCuaca
 }
