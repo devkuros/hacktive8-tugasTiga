@@ -14,6 +14,7 @@ func StartServer() *gin.Engine {
 	{
 		cuacaRouter.GET("/", repositories.CuacaUpdate)
 		cuacaRouter.GET("/stats", services.GetCuacaStatus)
+		cuacaRouter.GET("/json", services.GetJsonStats)
 	}
 
 	return routers
